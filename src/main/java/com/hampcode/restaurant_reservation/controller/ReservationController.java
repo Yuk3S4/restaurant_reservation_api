@@ -24,6 +24,13 @@ public class ReservationController {
     return new ResponseEntity<>(reservationResponse, HttpStatus.CREATED);
   }
 
+  @GetMapping("/{id}")
+  public ResponseEntity<ReservationResponseDTO> getReservationById(@PathVariable Long id) {
+    ReservationResponseDTO reservationResponse = reservationService.getReservationById(id);
+    return ResponseEntity.ok(reservationResponse);
+  }
+
+
   @GetMapping("/my-reservations")
   public ResponseEntity<List<ReservationResponseDTO>> getMyReservations() {
     List<ReservationResponseDTO> reservations = reservationService.getReservationsByClientId();

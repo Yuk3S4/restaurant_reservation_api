@@ -12,8 +12,8 @@ public class ReservationRequestDTO {
   @NotNull(message = "Restaurant ID is mandatory")
   private Long restaurantId;
 
-  @NotNull(message = "Client ID is mandatory")
-  private Long clientId;
+  /*@NotNull(message = "Client ID is mandatory")
+  private Long clientId;*/
 
   @NotNull(message = "Reservation date is mandatory")
   private LocalDateTime reservationDate;

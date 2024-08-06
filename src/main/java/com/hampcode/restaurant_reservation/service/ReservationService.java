@@ -61,14 +61,14 @@ public class ReservationService {
     return reservationMapper.toResponseDtoList(reservations);
   }
 
-  /*@Transactional
-  public ReservationResponseDTO confirmReservation(Long reservationId) {
+  @Transactional(readOnly = true)
+  public ReservationResponseDTO getReservationById(Long reservationId) {
     Reservation reservation = reservationRepository.findById(reservationId)
-      .orElseThrow(() -> new ResourceNotFoundException("Reservation not found"));
-    reservation.setStatus(ReservationStatus.CONFIRMED);
-    reservation = reservationRepository.save(reservation);
+            .orElseThrow(() -> new ResourceNotFoundException("Reservation not found"));
+
     return reservationMapper.toResponseDto(reservation);
-  }*/
+  }
+
 
   @Transactional
   public Reservation confirmReservationPayment(Long reservationId) {

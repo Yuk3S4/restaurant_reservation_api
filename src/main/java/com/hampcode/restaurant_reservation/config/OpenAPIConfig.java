@@ -21,12 +21,19 @@ public class OpenAPIConfig {
   @Value("${edteam.openapi.dev-url}")
   private String devUrl;
 
+  @Value("${edteam.openapi.prod-url}")
+  private String prodUrl;
+
   @Bean
   public OpenAPI myOpenAPI() {
     // Definir el servidor de desarrollo
     Server devServer = new Server();
     devServer.setUrl(devUrl);
     devServer.setDescription("Server URL in Development environment");
+
+    Server prodServer = new Server();
+    prodServer.setUrl(prodUrl);
+    prodServer.setDescription("Server URL in Production environment");
 
     // Información de contacto
     Contact contact = new Contact();
@@ -52,6 +59,7 @@ public class OpenAPIConfig {
       .scheme("bearer")
       .bearerFormat("JWT")
       .name("JWT Authentication");
+
     Components components = new Components()
       .addSecuritySchemes("bearerAuth", securityScheme);
 
@@ -61,7 +69,7 @@ public class OpenAPIConfig {
 
     return new OpenAPI()
       .info(info)
-      .servers(List.of(devServer))
+      .servers(List.of(devServer, prodServer))
       .addSecurityItem(securityRequirement)
       .components(components);
   }

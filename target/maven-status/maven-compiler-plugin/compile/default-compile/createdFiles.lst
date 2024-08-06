@@ -12,6 +12,7 @@ com\hampcode\restaurant_reservation\domain\entity\User.class
 com\hampcode\restaurant_reservation\dto\paypal\Link.class
 com\hampcode\restaurant_reservation\exception\BadRequestException.class
 com\hampcode\restaurant_reservation\security\JWTFilter.class
+com\hampcode\restaurant_reservation\config\CORSConfig.class
 com\hampcode\restaurant_reservation\domain\entity\Restaurant.class
 com\hampcode\restaurant_reservation\dto\paypal\OrderCaptureResponse.class
 com\hampcode\restaurant_reservation\exception\ErrorDetails.class
