@@ -1,0 +1,15 @@
+
+services:
+  db:
+    image: postgres:16.3
+    restart: on-failure
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: reservas_db
+      PGDATA: /var/lib/postgresql/data/pgdata
+    container_name: reservas_api
+    volumes:
+      - ./postgres_data:/var/lib/postgresql
